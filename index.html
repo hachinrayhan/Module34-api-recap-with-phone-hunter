@@ -18,6 +18,13 @@
             <input id="search-field" type="text" placeholder="Search Your Phone">
             <button id="btn-search" onclick="searchPhone()">Search</button>
         </section>
+        <section id="spinner" class="d-none">
+            <div class="d-flex justify-content-center mt-5">
+                <div class="spinner-border" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
+            </div>
+        </section>
         <section>
             <div id="phones-container" class="row row-cols-1 row-cols-md-3 g-4">
 
@@ -26,12 +33,8 @@
                 <h2 class="text-danger">No phone found. Please try a new search.</h2>
             </div>
         </section>
-        <section id="spinner" class="d-none">
-            <div class="d-flex justify-content-center mt-5">
-                <div class="spinner-border" role="status">
-                    <span class="visually-hidden">Loading...</span>
-                </div>
-            </div>
+        <section id="all-btn-section" class="mt-5 text-center d-none">
+            <button id="btn-show-all">Show All</button>
         </section>
     </main>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
