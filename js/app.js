@@ -36,7 +36,7 @@ const displayPhones = (phones, dataLimit) => {
                     <p class="card-text">This is a longer card with supporting text below as a natural lead-in
                         to additional content. This content is a little bit longer.</p>
                 </div>
-                <button onclick="loadPhoneDetails('${phone.slug}')" type="button" class="btn btn-primary">Show Details</button>
+                <button onclick="loadPhoneDetails('${phone.slug}')" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#phoneDetailsModal">Show Details</button>
             </div>
         `;
         phonesContainer.appendChild(phoneDiv);
@@ -87,7 +87,16 @@ const toggleSpinner = isLoading => {
 const loadPhoneDetails = async id => {
     const res = await fetch(`https://openapi.programming-hero.com/api/phone/${id}`);
     const data = await res.json();
-    console.log(data.data);
+    displayPhoneDetails(data.data);
 }
 
-// loadPhones('iphone');
+const displayPhoneDetails = phone => {
+    const title = document.getElementById('phoneDetailsModalLabel');
+    title.innerText = phone.name;
+    const modalBody = document.getElementById('modal-body');
+    modalBody.innerHTML = `
+        <p>Chipset: ${phone.mainFeatures.chipSet} <br> Display Size: ${phone.mainFeatures.displaySize} <br> Memory: ${phone.mainFeatures.memory} <br> Release Date: ${phone.releaseDate ? phone.releaseDate : 'no release date found'}</p>
+    `;
+}
+
+loadPhones('iphone');
